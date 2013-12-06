@@ -7,16 +7,8 @@ import "C"
 
 import (
 	"unsafe"
-	"fmt"
 )
 
-type LibmountError struct {
-	messages string
-}
-
-func BuildError(format string, arg ...interface{}) LibmountError {
-	return LibmountError{fmt.Sprintf(format,arg)}
-}
 
 func (input LibmountError) Error() string {
 	return input.messages
