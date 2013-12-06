@@ -115,5 +115,15 @@ func (context * Context) EnableLazy(option bool) (err error) {
 	}
 }
 
+func (context * Context) EnableLoopdel(option bool) (err error) {
+	arg := convertBool(option)
+	result := int(C.mnt_context_enable_loopdel(context.handler,arg))
+	if result == 0 {
+		return nil;
+	} else {
+		return BuildError("Error on enabling loop deletion. Exit code = %d",result)
+	}
+}
+
 
 
