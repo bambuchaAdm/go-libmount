@@ -65,3 +65,13 @@ func (context * Context) DisableHelpers(option bool) (err error) {
 	}
 }
 
+func (context * Context) DisableMtab(option bool) (err error) {
+	arg := convertBool(option)
+	result := int(C.mnt_context_disable_mtab(context.handler,arg))
+	if result == 0 {
+		return nil;
+	} else {
+		return BuildError("Error on disables mtab. Exit code = %d",result)
+	}
+}
+
