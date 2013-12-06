@@ -1,14 +1,21 @@
-package context;
+package libmount;
 
 //#cgo pkg-config: mount
 //#include <libmount/libmount.h>
 //#include <stdlib.h>
 import "C"
 
-import "unsafe"
+import (
+	"unsafe"
+	"fmt"
+)
 
 type LibmountError struct {
 	messages string
+}
+
+func BuildError(format string, arg ...interface{}) LibmountError {
+	return LibmountError{fmt.Sprintf(format,arg)}
 }
 
 func (input LibmountError) Error() string {
@@ -28,13 +35,22 @@ func (context * Context) free() {
 }
 
 func (context * Context) AppendOptions(options string) (err error) {
-	cstring := C.CString(options)
-	defer C.free(unsafe.Pointer(cstring))
-	result := C.mnt_context_append_options(context.handler,cstring)
+	arg := C.CString(options)
+	defer C.free(unsafe.Pointer(arg))
+	result := int(C.mnt_context_append_options(context.handler,arg))
 	if result == 0 {
 		return nil;
 	} else {
-		return LibmountError{"Error on appending options to context"}
+		return BuildError("Error on appending options to context. Exit code = %d",result)
 	}
 }
 
+func (context * Context) DisableCanonicalize(option bool) (err error) {
+	arg := convertBool(option)
+	result := int(C.mnt_context_disable_canonicalize(context.handler,arg))
+	if result == 0 {
+		return nil;
+	} else {
+		return BuildError("Error on disables canonicalzied form. Exit code = %d",result)
+	}
+}
