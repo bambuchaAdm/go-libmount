@@ -85,3 +85,35 @@ func (context * Context) EnableFake(option bool) (err error) {
 	}
 }
 
+func (context * Context) EnableForce(option bool) (err error) {
+	arg := convertBool(option)
+	result := int(C.mnt_context_enable_force(context.handler,arg))
+	if result == 0 {
+		return nil;
+	} else {
+		return BuildError("Error on enabling force. Exit code = %d",result)
+	}
+}
+
+func (context * Context) EnableFork(option bool) (err error) {
+	arg := convertBool(option)
+	result := int(C.mnt_context_enable_fork(context.handler,arg))
+	if result == 0 {
+		return nil;
+	} else {
+		return BuildError("Error on enabling forking. Exit code = %d",result)
+	}
+}
+
+func (context * Context) EnableLazy(option bool) (err error) {
+	arg := convertBool(option)
+	result := int(C.mnt_context_enable_layzy(context.handler,arg))
+	if result == 0 {
+		return nil;
+	} else {
+		return BuildError("Error on enabling lazy mounting. Exit code = %d",result)
+	}
+}
+
+
+
