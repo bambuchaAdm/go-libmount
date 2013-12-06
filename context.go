@@ -54,3 +54,14 @@ func (context * Context) DisableCanonicalize(option bool) (err error) {
 		return BuildError("Error on disables canonicalzied form. Exit code = %d",result)
 	}
 }
+
+func (context * Context) DisableHelpers(option bool) (err error) {
+	arg := convertBool(option)
+	result := int(C.mnt_context_disable_helpers(context.handler,arg))
+	if result == 0 {
+		return nil;
+	} else {
+		return BuildError("Error on disables helpers. Exit code = %d",result)
+	}
+}
+
