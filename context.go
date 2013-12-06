@@ -107,7 +107,7 @@ func (context * Context) EnableFork(option bool) (err error) {
 
 func (context * Context) EnableLazy(option bool) (err error) {
 	arg := convertBool(option)
-	result := int(C.mnt_context_enable_layzy(context.handler,arg))
+	result := int(C.mnt_context_enable_lazy(context.handler,arg))
 	if result == 0 {
 		return nil;
 	} else {
@@ -124,6 +124,38 @@ func (context * Context) EnableLoopdel(option bool) (err error) {
 		return BuildError("Error on enabling loop deletion. Exit code = %d",result)
 	}
 }
+
+func (context * Context) EnableRdonlyUmount(option bool) (err error) {
+	arg := convertBool(option)
+	result := int(C.mnt_context_enable_rdonly_umount(context.handler,arg))
+	if result == 0 {
+		return nil;
+	} else {
+		return BuildError("Error on enabling read only remount. Exit code = %d",result)
+	}
+}
+
+func (context * Context) EnableSloppy(option bool) (err error) {
+	arg := convertBool(option)
+	result := int(C.mnt_context_enable_sloppy(context.handler,arg))
+	if result == 0 {
+		return nil;
+	} else {
+		return BuildError("Error on enabling sloppy mounting. Exit code = %d",result)
+	}
+}
+
+func (context * Context) EnableVerbose(option bool) (err error) {
+	arg := convertBool(option)
+	result := int(C.mnt_context_enable_verbose(context.handler,arg))
+	if result == 0 {
+		return nil;
+	} else {
+		return BuildError("Error on enabling sloppy mounting. Exit code = %d",result)
+	}
+}
+
+
 
 
 
