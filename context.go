@@ -38,7 +38,7 @@ func (context * Context) AppendOptions(options string) (err error) {
 }
 
 func (context * Context) DisableCanonicalize(option bool) (err error) {
-	arg := convertBool(option)
+	arg := convertFromBool(option)
 	result := int(C.mnt_context_disable_canonicalize(context.handler,arg))
 	if result == 0 {
 		return nil;
@@ -48,7 +48,7 @@ func (context * Context) DisableCanonicalize(option bool) (err error) {
 }
 
 func (context * Context) DisableHelpers(option bool) (err error) {
-	arg := convertBool(option)
+	arg := convertFromBool(option)
 	result := int(C.mnt_context_disable_helpers(context.handler,arg))
 	if result == 0 {
 		return nil;
@@ -58,7 +58,7 @@ func (context * Context) DisableHelpers(option bool) (err error) {
 }
 
 func (context * Context) DisableMtab(option bool) (err error) {
-	arg := convertBool(option)
+	arg := convertFromBool(option)
 	result := int(C.mnt_context_disable_mtab(context.handler,arg))
 	if result == 0 {
 		return nil;
@@ -68,7 +68,7 @@ func (context * Context) DisableMtab(option bool) (err error) {
 }
 
 func (context * Context) EnableFake(option bool) (err error) {
-	arg := convertBool(option)
+	arg := convertFromBool(option)
 	result := int(C.mnt_context_enable_fake(context.handler,arg))
 	if result == 0 {
 		return nil;
@@ -78,7 +78,7 @@ func (context * Context) EnableFake(option bool) (err error) {
 }
 
 func (context * Context) EnableForce(option bool) (err error) {
-	arg := convertBool(option)
+	arg := convertFromBool(option)
 	result := int(C.mnt_context_enable_force(context.handler,arg))
 	if result == 0 {
 		return nil;
@@ -88,7 +88,7 @@ func (context * Context) EnableForce(option bool) (err error) {
 }
 
 func (context * Context) EnableFork(option bool) (err error) {
-	arg := convertBool(option)
+	arg := convertFromBool(option)
 	result := int(C.mnt_context_enable_fork(context.handler,arg))
 	if result == 0 {
 		return nil;
@@ -98,7 +98,7 @@ func (context * Context) EnableFork(option bool) (err error) {
 }
 
 func (context * Context) EnableLazy(option bool) (err error) {
-	arg := convertBool(option)
+	arg := convertFromBool(option)
 	result := int(C.mnt_context_enable_lazy(context.handler,arg))
 	if result == 0 {
 		return nil;
@@ -108,7 +108,7 @@ func (context * Context) EnableLazy(option bool) (err error) {
 }
 
 func (context * Context) EnableLoopdel(option bool) (err error) {
-	arg := convertBool(option)
+	arg := convertFromBool(option)
 	result := int(C.mnt_context_enable_loopdel(context.handler,arg))
 	if result == 0 {
 		return nil;
@@ -118,7 +118,7 @@ func (context * Context) EnableLoopdel(option bool) (err error) {
 }
 
 func (context * Context) EnableRdonlyUmount(option bool) (err error) {
-	arg := convertBool(option)
+	arg := convertFromBool(option)
 	result := int(C.mnt_context_enable_rdonly_umount(context.handler,arg))
 	if result == 0 {
 		return nil;
@@ -128,7 +128,7 @@ func (context * Context) EnableRdonlyUmount(option bool) (err error) {
 }
 
 func (context * Context) EnableSloppy(option bool) (err error) {
-	arg := convertBool(option)
+	arg := convertFromBool(option)
 	result := int(C.mnt_context_enable_sloppy(context.handler,arg))
 	if result == 0 {
 		return nil;
@@ -138,7 +138,7 @@ func (context * Context) EnableSloppy(option bool) (err error) {
 }
 
 func (context * Context) EnableVerbose(option bool) (err error) {
-	arg := convertBool(option)
+	arg := convertFromBool(option)
 	result := int(C.mnt_context_enable_verbose(context.handler,arg))
 	if result == 0 {
 		return nil;
