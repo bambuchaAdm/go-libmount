@@ -9,11 +9,6 @@ import (
 	"unsafe"
 )
 
-
-func (input LibmountError) Error() string {
-	return input.messages
-}
-
 type Context struct {
 	 handler * C.struct_libmnt_context
 }

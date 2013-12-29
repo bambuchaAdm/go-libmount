@@ -7,6 +7,10 @@ type LibmountError struct {
 	messages string
 }
 
+func (input LibmountError) Error() string {
+	return input.messages
+}
+
 func BuildError(format string, arg ...interface{}) LibmountError {
 	return LibmountError{fmt.Sprintf(format,arg)}
 }
